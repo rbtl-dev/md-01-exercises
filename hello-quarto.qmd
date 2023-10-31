@@ -44,6 +44,7 @@ gapminder |>
   gt() 
 
 ```
+
 ## Life expectancy
 
 ```{r}
