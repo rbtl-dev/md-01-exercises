@@ -1,0 +1,85 @@
+---
+title: "Hello Quarto"
+format: 
+  html:
+    toc: true
+    code-fold: true
+  pdf: default
+author: Lars Schöbitz 
+date: today
+editor: visual
+---
+
+# Introduction
+
+## Data
+
+Data can be imported from many different sources. In this exercise, we import data from:
+
+1.  an R Package that is loaded via the `library()` function.
+
+```{r}
+#| label: load-packages
+#| message: false
+
+library(ggplot2)
+library(dplyr)
+library(gapminder)
+library(gt)
+```
+
+## Gapminder data
+
+For this analysis we'll use the Gapminder dataset from the gapminder R package.
+
+```{r}
+head(gapminder)
+```
+
+## Population
+
+The table below shows a summary for the population grouped by continent.
+
+```{r}
+#| label: gapminder-lifexp
+
+gapminder |> 
+  filter(year == 2007) |> 
+  group_by(continent) |>
+  summarise(
+    mean_life_exp = mean(pop)
+  ) |> 
+  gt() 
+
+```
+
+## Life expectancy
+
+```{r}
+#| label: boxplot-continent
+#| fig-width: 5
+#| fig-asp: 0.618
+
+gapminder_2007 <- gapminder |> 
+  filter(year == 2007)
+
+ggplot(data = gapminder_2007, 
+       mapping = aes(x = continent, 
+                     y = lifeExp)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.1, alpha = 1/4, size = 3) +
+  labs(x = NULL,
+       y = "life expectancy") +
+  theme_minimal() 
+
+```
+
+# Analysis
+
+## Model 1
+
+-   text
+
+-   text
+
+-   text
