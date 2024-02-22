@@ -1,12 +1,12 @@
 ---
 title: "Hello Quarto"
+author: "Lars Schöbitz"
+date: today
 format: 
   html:
     toc: true
     code-fold: true
   pdf: default
-author: Lars Schöbitz 
-date: today
 editor: visual
 ---
 
